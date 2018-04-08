@@ -1,0 +1,9 @@
+# Rule 1
+User-agent: Googlebot
+Disallow: http://secretsanta.jovanilic.com/
+
+# Rule 2
+User-agent: *
+Allow: /
+
+Sitemap: http://www.jovanilic.com/sitemap.xml

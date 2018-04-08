@@ -12,8 +12,19 @@ RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 RewriteRule ^quotes\/quotes\.php$ "http\:\/\/quotes\.jovanilic\.com\/quotes\.php" [R=301,L]
 
-<FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
-    Header set Cache-Control "max-age=604800, public"
+# 480 weeks
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+Header set Cache-Control "max-age=290304000, public"
+</FilesMatch>
+
+# 2 DAYS
+<FilesMatch "\.(xml|txt)$">
+Header set Cache-Control "max-age=172800, public, must-revalidate"
+</FilesMatch>
+
+# 2 HOURS
+<FilesMatch "\.(html|htm)$">
+Header set Cache-Control "max-age=7200, must-revalidate"
 </FilesMatch>
 
 # php -- BEGIN cPanel-generated handler, do not edit

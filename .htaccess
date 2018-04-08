@@ -12,6 +12,10 @@ RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 RewriteRule ^quotes\/quotes\.php$ "http\:\/\/quotes\.jovanilic\.com\/quotes\.php" [R=301,L]
 
+<FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+    Header set Cache-Control "max-age=604800, public"
+</FilesMatch>
+
 # php -- BEGIN cPanel-generated handler, do not edit
 # NOTE this account's php is controlled via FPM and the vhost, this is a place holder.
 # Do not edit. This next line is to support the cPanel php wrapper (php_cli).

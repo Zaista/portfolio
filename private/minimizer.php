@@ -13,6 +13,9 @@
 	 * This services are property of Andy Chilton, http://chilts.org/
 	 *
 	 * Copyrighted 2013 by Toni Almeida, promatik.
+	 *
+	 * Updated by Jovan Ilic
+	 *
 	 */
 	
 	function minifyJS($arr){
@@ -28,7 +31,7 @@
 			$handler = fopen($value, 'w') or die("File <a href='" . $value . "'>" . $value . "</a> error!<br />");
 			fwrite($handler, getMinified($url, file_get_contents($key)));
 			fclose($handler);
-			echo "File <a href='" . $value . "'>" . $value . "</a> done!<br />";
+			echo "Minificaiton of file " . $value . " done.<br />";
 		}
 	}
 	
@@ -40,8 +43,8 @@
 		return file_get_contents($url, false, stream_context_create($postdata));
 	}
 	
-	/* FILES ARRAYs
-	 * Keys as input, Values as output */ 
+	// FILES ARRAYs
+	// Keys as input, Values as output
 	
 	$js = array(
 		"../js/index.js" 	=> "../js/index.min.js"
@@ -54,4 +57,19 @@
 	minifyJS($js);
 	minifyCSS($css);
 	
+	
+	// edit index.html file to use minified css and js files
+	$file = file("../index.html");
+	$temp = fopen("../index2.html", "w+");
+	
+	foreach ($file as $line) {
+		if (strpos($line, "css/index.css") !== false)
+			$line = str_replace("css/index.css","css/index.min.css",$line);
+		if (strpos($line, "js/index.js") !== false)
+			$line = str_replace("js/index.js","js/index.min.js",$line);
+		fwrite($temp, $line); 
+	}
+	fclose($temp);
+	copy("../index2.html", "../index.html");
+	echo "Script complete!";
 ?>

@@ -1,15 +1,15 @@
 $(document).ready(function() {
 	setTimeout ( function () {
-		//$("#photodiv").height($("#rightcol").height());
+		var kinks = $("#kinks div").height();
+		var features = $("#features div").height();
+		if (kinks < features)
+			$("#kinks div").height(features);
+		else if (kinks > features)
+			$("#features div").height(kinks);
 		
-		if ($("#kinks div").height() < $("#features div").height())
-			$("#kinks div").height($("#features div").height());
-		else
-			$("#features div").height($("#kinks div").height());
-	}, 1);
-	
-	var photoHeight = $("#photo").height();
-	var photodivHeight = $("#photodiv").height();
-	var photoMargin = photodivHeight/2 - photoHeight/2
-	$("#photo").css("margin-top", photoMargin);
+		var photoHeight = $("#photo").height();
+		var photodivHeight = $("#photodiv").height();
+		var photoMargin = photodivHeight/2 - photoHeight/2
+		$("#photo").css("margin-top", photoMargin);
+	}, 10);
 });

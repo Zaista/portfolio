@@ -3,6 +3,8 @@ image: samueldebruyn/debian-git
 pipelines:
   default:
     - step:
+        name: Deploy to production
+        deployment: production
         script:
           - apt-get update
           - apt-get -qq install git-ftp

@@ -18,58 +18,68 @@
 	 *
 	 */
 	
-	function minifyJS($arr){
-		minify($arr, 'https://javascript-minifier.com/raw');
-	}
+	# Get JSON from request body
+	$json_str = file_get_contents('php://input');
 	
-	function minifyCSS($arr){
-		minify($arr, 'https://cssminifier.com/raw');
-	}
+	$json = json_decode($json_str, true);
 	
-	function minify($arr, $url) {
-		foreach ($arr as $key => $value) {
-			$handler = fopen($value, 'w') or die("File <a href='" . $value . "'>" . $value . "</a> error!<br />");
-			fwrite($handler, getMinified($url, file_get_contents($key)));
-			fclose($handler);
-			echo "Minificaiton of file " . $value . " done.<br />";
+	if($json['commit_status']['state'] == 'SUCCESSFUL') {
+		
+		function minifyJS($arr){
+			minify($arr, 'https://javascript-minifier.com/raw');
 		}
+		
+		function minifyCSS($arr){
+			minify($arr, 'https://cssminifier.com/raw');
+		}
+		
+		function minify($arr, $url) {
+			foreach ($arr as $key => $value) {
+				$handler = fopen($value, 'w') or die("File <a href='" . $value . "'>" . $value . "</a> error!<br />");
+				fwrite($handler, getMinified($url, file_get_contents($key)));
+				fclose($handler);
+				echo "Minificaiton of file " . $value . " done.\n";
+			}
+		}
+		
+		function getMinified($url, $content) {
+			$postdata = array('http' => array(
+				'method'  => 'POST',
+				'header'  => 'Content-type: application/x-www-form-urlencoded',
+				'content' => http_build_query( array('input' => $content) ) ) );
+			return file_get_contents($url, false, stream_context_create($postdata));
+		}
+		
+		// FILES ARRAYs
+		// Keys as input, Values as output
+		
+		$js = array(
+			"../js/index.js" 	=> "../js/index.min.js"
+		);
+		
+		$css = array(
+			"../css/index.css"	=> "../css/index.min.css"
+		);
+		
+		minifyJS($js);
+		minifyCSS($css);
+		
+		
+		// edit index.html file to use minified css and js files
+		$file = file("../index.html");
+		$temp = fopen("../index2.html", "w+");
+		
+		foreach ($file as $line) {
+			if (strpos($line, "css/index.css") !== false)
+				$line = str_replace("css/index.css","css/index.min.css",$line);
+			if (strpos($line, "js/index.js") !== false)
+				$line = str_replace("js/index.js","js/index.min.js",$line);
+			fwrite($temp, $line); 
+		}
+		fclose($temp);
+		copy("../index2.html", "../index.html");
+		echo "Script complete!";
+	} else {
+		echo "Request incorrect.";
 	}
-	
-	function getMinified($url, $content) {
-		$postdata = array('http' => array(
-	        'method'  => 'POST',
-	        'header'  => 'Content-type: application/x-www-form-urlencoded',
-	        'content' => http_build_query( array('input' => $content) ) ) );
-		return file_get_contents($url, false, stream_context_create($postdata));
-	}
-	
-	// FILES ARRAYs
-	// Keys as input, Values as output
-	
-	$js = array(
-		"../js/index.js" 	=> "../js/index.min.js"
-	);
-	
-	$css = array(
-		"../css/index.css"	=> "../css/index.min.css"
-	);
-	
-	minifyJS($js);
-	minifyCSS($css);
-	
-	
-	// edit index.html file to use minified css and js files
-	$file = file("../index.html");
-	$temp = fopen("../index2.html", "w+");
-	
-	foreach ($file as $line) {
-		if (strpos($line, "css/index.css") !== false)
-			$line = str_replace("css/index.css","css/index.min.css",$line);
-		if (strpos($line, "js/index.js") !== false)
-			$line = str_replace("js/index.js","js/index.min.js",$line);
-		fwrite($temp, $line); 
-	}
-	fclose($temp);
-	copy("../index2.html", "../index.html");
-	echo "Script complete!";
 ?>

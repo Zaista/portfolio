@@ -7,112 +7,74 @@
 }
 
 body {
-	min-width: 400px;
+	min-width: 350px;
 }
 
 p, .name, ul, span, table {
 	font-family: 'myFont';
 }
 
+h2 {
+	min-width: 210px;
+}
+
 ul {
 	padding-left: 25px;
 }
 
-.main > div {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.no-bottom-padding {
+	padding-bottom: 0;
 }
 
-.text {
-	padding-top: 15px;
+#additional .row {
+	padding-top: 5px;
 }
 
-.header {
-	margin-top: 10px;
-	font-size: 20px;
-	padding-bottom: 20px;
+#additional p {
+	margin-bottom: 5px;
 }
 
 .border {
-	border: 1px solid lightgrey;
 	padding: 10px;
+	padding-top: 20px;
 }
 
-	.header h2 {
-	}
-	
-	.header p {
-	}
+.header {
+	margin-top: 0.5em;
+}
+
+.far.far {
+	-webkit-text-stroke: 0.1px lightgray;
+}
 
 #photo {
 	width: 80%;
 }
 
 #photodiv {
-	height: 100%;
 	text-align: center;
-	padding: 0;
-}
-
-#photodiv>div {
-	padding: 0;
 }
 
 .toptext {
 	position: absolute;
 	top: -13px;
-	left: 15px;
+	left: 30px;
 	color: grey;
 	font-size: 16px;
 	background-color: white;
-}
-
-
-.row {
-	padding-bottom: 20px;
-	font-size: 16px;
-}
-
-#file, #contact {
-	padding-left: 0;
-}
-
-#file>div {
-	padding-bottom: 0;
-	height: 100%;
-	text-align: center;
-}
-
-#contact>div {
-	margin-right: 15px;
-	padding-top: 20px;
-	height: 100%;
-	text-align: center;
+	z-index: 10000;
 }
 	
-#thisone {
-	padding-bottom: 0;
-}
-	
-#quirks>div {
+#attributes>div {
 	height: 100%;
 }
 
-.tablediv {
-	height: 100%;
-	overflow-x: auto;
+#attributes-line {
+	min-width: 240px;
 }
 
-table {
-	width: 95%;
-	margin-top: 15px;
-}
-
-.statscell {
-	min-width: 145px;
-}
-
-#additional img {
-	width: 150px;
+#quirks-line {
+	min-width: 230px;
 }
 
 /* unvisited link */
@@ -136,7 +98,9 @@ a:active {
     color: black !important;
 }
 
-
+#typer {
+	opacity: 0;
+}
 
 .namemark:after {
 	content: "-";
@@ -156,137 +120,20 @@ a:active {
 	body {
 		padding-top: 25px;
 	}
-	
-	#features {
-		padding-right: 0;
-	}
-	
-	#quirks {
-		padding: 0;
+
+	.row {
+		font-size: 15px;
+		padding-bottom: 20px;
 	}
 }
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    #kinks {
+	#quirks, #file, #contact, #attributes, #summary, #features, #kinks, #additional {
         margin-top: 20px;
-    }
-	
-	#traits, #quirks {
-		padding-left: 0;
-	}
-	
-	#rightcol .row {
-		padding-left: 15px;
 	}
 	
 	.main {
 		padding-bottom: 0;
 	}
-}
-
-@media only screen and (max-width: 575px) {
-	/* For min size */
-	#traits, #file, #contact {
-        margin-top: 20px;
-	}
-	
-	#photo {
-		width: 50%;
-	}
-}
-	
-	
-	
-/* CHECKBOX */
-/* Customize the label (the container) */
-.boxes {
-	display: block;
-	position: relative;
-	padding-left: 30px;
-	margin-bottom: 6px;
-	margin-left: 10px;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-#firstbox {
-	margin-top: 15px;
-}
-
-/* Hide the browser's default checkbox */
-.boxes input {
-	position: absolute;
-	opacity: 0;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-	position: absolute;
-	margin-top: 4px;
-	top: 0;
-	left: 0;
-	height: 18px;
-	width: 18px;
-	border: 1px solid grey;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-	content: "";
-	position: absolute;
-	display: none;
-}
-
-/* Show the checkmark when checked */
-.boxes input:checked ~ .checkmark:after {
-	display: block;
-}
-
-/* Style the checkmark/indicator */
-.boxes .checkmark:after {
-	left: 8px;
-	top: -5px;
-	width: 10px;
-	height: 20px;
-	border: solid black;
-	border-width: 0 1px 1px 0;
-	-webkit-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	transform: rotate(45deg);
-}
-
-/*STATS*/
-.statsmark {
-	border: 1px solid grey;
-	width: 18px;
-	height: 18px;
-	display: inline-block;
-	margin-left: 6px;
-}
-
-.marked:after {
-	content: "|";
-	font-weight: bold;
-	display: inline-block;
-	position: relative;
-	left: -3px;
-	top: -5px;
-	-webkit-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	transform: rotate(45deg);
-	
-}
-
-.marked:before {
-	content: "|";
-	display: inline-block;
-	position: relative;
-	left: 3px;
-	top: -4px;
-	-webkit-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	transform: rotate(-45deg);
 }

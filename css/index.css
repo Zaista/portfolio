@@ -23,7 +23,7 @@ ul {
 }
 
 .no-bottom-padding {
-	padding-bottom: 0;
+	padding-bottom: 0 !important;
 }
 
 #additional .row {
@@ -48,7 +48,8 @@ ul {
 }
 
 #photo {
-	width: 80%;
+	width: 70%;
+	transform: rotate(3deg);
 }
 
 #photodiv {

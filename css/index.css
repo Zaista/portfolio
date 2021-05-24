@@ -10,7 +10,7 @@ body {
 	min-width: 350px;
 }
 
-p, .name, ul, span, table {
+p, .name, ul, span, table, a {
 	font-family: 'myFont';
 }
 
@@ -43,12 +43,23 @@ ul {
 	margin-top: 0.5em;
 }
 
+#contact a {
+	display: inline-block;
+}
+
+#icons {
+	color: rgb(83, 83, 83);
+	cursor: pointer;
+}
+
 .far.far {
 	-webkit-text-stroke: 0.1px lightgray;
 }
 
 #photo {
+	display: inline-block;
 	width: 70%;
+	max-width: 200px;
 	transform: rotate(3deg);
 }
 
@@ -71,7 +82,7 @@ ul {
 }
 
 #attributes-line {
-	min-width: 240px;
+	min-width: 193px;
 }
 
 #quirks-line {
@@ -79,19 +90,22 @@ ul {
 }
 
 /* unvisited link */
-a:link {
-    color: grey !important;
+ a:link {
+    color: rgb(83, 83, 83) !important;
+}
+#additional a:link {
 	font-weight: 600 !important;
 }
 
 /* visited link */
 a:visited {
-    color: grey !important;
+    color: rgb(83, 83, 83) !important;
 }
 
 /* mouse over link */
 a:hover {
     color: black !important;
+	text-decoration: none !important;
 }
 
 /* selected link */
@@ -138,3 +152,25 @@ a:active {
 		padding-bottom: 0;
 	}
 }
+
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+	height: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: #555;
+  }

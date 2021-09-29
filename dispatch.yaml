@@ -1,0 +1,6 @@
+dispatch:
+    - url: "jovanilic.com/*"
+      service: default
+
+    - url: "quotes.jovanilic.com/*"
+      service: quotes

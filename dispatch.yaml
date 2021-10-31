@@ -4,3 +4,9 @@ dispatch:
 
     - url: "quotes.jovanilic.com/*"
       service: quotes
+
+    - url: "secretsanta.jovanilic.com/*"
+      service: secretsanta
+
+    - url: "poker.jovanilic.com/*"
+      service: poker

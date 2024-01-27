@@ -13,3 +13,6 @@ dispatch:
 
     - url: "milicavlaskalic.com/*"
       service: teta
+
+    - url: "mikombauservice.de/*"
+      service: montageservice

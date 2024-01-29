@@ -2,17 +2,17 @@ dispatch:
     - url: "jovanilic.com/*"
       service: default
 
-    - url: "quotes.jovanilic.com/*"
+    - url: "*.quotes.jovanilic.com/*"
       service: quotes
 
-    - url: "secretsanta.jovanilic.com/*"
+    - url: "*.secretsanta.jovanilic.com/*"
       service: secretsanta
 
-    - url: "poker.jovanilic.com/*"
+    - url: "*.poker.jovanilic.com/*"
       service: poker
 
-    - url: "milicavlaskalic.com/*"
+    - url: "*/milicavlaskalic.com/*"
       service: teta
 
-    - url: "mikombauservice.de/*"
+    - url: "*.mikombauservice.de/*"
       service: montageservice

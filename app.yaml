@@ -1,7 +1,5 @@
-runtime: python27
-api_version: 1
+runtime: python312
 service: default
-threadsafe: true
 
 handlers:
 - url: /
